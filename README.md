@@ -41,7 +41,7 @@ patient-registration-backend/
 
 ```
 DATABASE_PASSWORD=your_database_password
-DATABASE_NAME=your_database_name
+DATABASE_NAME=patients
 DATABASE_USER=your_database_user
 DATABASE_HOST=db
 DATABASE_PORT=3306
@@ -51,6 +51,13 @@ EMAIL_USERNAME=your_email_username
 EMAIL_PASSWORD=your_email_password
 EMAIL_HOST=your_email_host
 ```
+
+*Important Notes*:
+
+* The `EMAIL_HOST`, `EMAIL_USERNAME`, and `EMAIL_PASSWORD` variables should be set to the SMTP server of your email provider. In this case, we are using mailtrap.io for testing purposes.
+* The `DATABASE_USER` and `DATABASE_PASSWORD` variables should be set to the credentials of your MySQL database. In this case you can use whatever you want.
+
+
 
 ### Frontend `.env` file in `patient-registration-frontend/`
 ```
