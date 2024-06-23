@@ -100,7 +100,8 @@ The `docker-compose.yml` file is located in the `patient-registration-backend/` 
 - **Frontend**: React application served by Vite.
 - **Backend**: Two microservices built with NestJS. One for patient registration and the other for sending notifications.
 - **Database**: MySQL database for storing patient information.
-- **Cache**: Redis for BullQueue.
+- **Redis**: Redis server for the BullQueue job queue.
+
 
 ## File Upload Handling
 
