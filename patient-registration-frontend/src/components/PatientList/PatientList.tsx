@@ -29,7 +29,6 @@ const PatientList: React.FC = () => {
     })
       .then(response => {
         if (response.ok) {
-          // Eliminación exitosa, actualizar la lista de pacientes excluyendo el paciente eliminado
           const updatedPatients = patients.filter(patient => patient.id !== id);
           setPatients(updatedPatients);
         } else {
@@ -52,7 +51,7 @@ const PatientList: React.FC = () => {
               isExpanded={expandedIndex === index}
               documentPhoto={patient.documentPhoto}
               onToggle={() => setExpandedIndex(expandedIndex === index ? null : index)}
-              onDelete={() => handleDeletePatient(patient.id)} // Agregar función onDelete
+              onDelete={() => handleDeletePatient(patient.id)} 
               className={expandedIndex === index ? 'expanded' : ''}
             />
           ))
