@@ -39,6 +39,7 @@ patient-registration-backend/
 
 ### Backend `.env` file in `patient-registration-backend/`
 
+```
 DATABASE_PASSWORD=your_database_password
 DATABASE_NAME=your_database_name
 DATABASE_USER=your_database_user
@@ -49,12 +50,13 @@ REDIS_PORT=6379
 EMAIL_USERNAME=your_email_username
 EMAIL_PASSWORD=your_email_password
 EMAIL_HOST=your_email_host
+```
 
 ### Frontend `.env` file in `patient-registration-frontend/`
-
+```
 VITE_BACKEND_HOST=http://127.0.0.1:3001
 PORT=3003
-
+```
 
 ## Docker Compose Configuration
 
