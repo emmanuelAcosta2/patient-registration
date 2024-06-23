@@ -1,0 +1,83 @@
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.animated {
+    animation: showModal 1s forwards easeOut
+}
+
+.modal {
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 80%;
+    text-align: center;
+    position: relative;
+    animation: fade-in 1s backwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 100;
+    }
+}
+
+
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: left;
+    position: relative;
+}
+
+.modal-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.modal-title.error {
+    color: #c81022;
+}
+.modal-title.success {
+    color: #155724;
+}
+.modal-title.info {
+    color: #0c5460;
+}
+.modal-multiple-errors {
+    background-color: #f8d7da;
+    color: #856404;
+}
+
+.modal-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.modal-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #000;
+}

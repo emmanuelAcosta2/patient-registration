@@ -1,0 +1,40 @@
+.patient-list-container {
+    padding: 16px;
+  }
+  
+  .patient-list {
+    display: grid;
+    gap: 24px 16px; 
+    justify-content: center;
+  }
+  
+  /* Grid layout for different screen sizes */
+  @media (min-width: 1024px) {
+    .patient-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .patient-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .patient-list {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+
+
+  .title {
+    font-size: 2em;
+    margin-bottom: 16px;
+    @media screen and (max-width: 768px) {
+      font-size: 1.5em;
+      
+    }
+  }
+  

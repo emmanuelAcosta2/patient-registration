@@ -1,0 +1,94 @@
+version: '3.8'
+networks:
+  app-tier:
+    driver: bridge
+
+services:
+  db:
+    container_name: mysql8
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DATABASE_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}  
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+    command: --mysql_native_password=on
+    env_file:
+      - .env
+    
+    ports:
+      - '3306:3306'
+    volumes:
+      - './docker/db/data:/var/lib/mysql'
+      - './docker/db/my.cnf:/etc/mysql/conf.d/my.cnf'
+      - './docker/db/sql:/docker-entrypoint-initdb.d'
+    networks:
+      - app-tier
+
+  redis:
+    image: redis:alpine
+    ports:
+      - '6379:6379'
+    networks:
+      - app-tier
+
+  patient-service:
+    container_name: patient-service
+    build:
+      context: .
+      args:
+        - APP=patient-service
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: jdbc:mysql://db:3306/${DATABASE_NAME}?useSSL=false&serverTimezone=UTC
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+    
+    depends_on:
+      - db
+      - redis
+    networks:
+      - app-tier
+
+  notification-service:
+    container_name: notification-service
+    build:
+      context: .
+      args:
+        - APP=notification-service
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      EMAIL_USERNAME: ${EMAIL_USERNAME}
+      EMAIL_PASSWORD: ${EMAIL_PASSWORD}
+      EMAIL_HOST: ${EMAIL_HOST}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+    depends_on:
+      - redis
+    networks:
+      - app-tier
+  frontend:
+
+    container_name: patient-registration-frontend
+    build:
+      context: ../patient-registration-frontend
+    env_file: ../patient-registration-frontend/.env
+      
+    restart: always
+    ports:
+      - "3003:3003"
+    networks:
+      - app-tier
