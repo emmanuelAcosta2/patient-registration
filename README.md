@@ -9,23 +9,30 @@ This application is a patient registration system composed of multiple microserv
 
 ## Folder Structure
 
+```
 patient-registration-frontend/
-│ ├── Dockerfile
-│ ├── .env
-│ ├── ...
+│
+├── Dockerfile
+├── .env
+├── ...
 patient-registration-backend/
-│ ├── docker/
-│ │ ├── db/
-│ │ │ ├── data/
-│ │ │ ├── my.cnf
-│ │ │ ├── sql/
-│ │ ├── ...
-│ ├── .env
-│ ├── docker-compose.yml
-│ ├── Dockerfile
-│ ├── ...
-notification-service/
-│ ├── ...
+│
+├── docker/
+│   ├── db/
+│   │   ├── data/
+│   │   ├── my.cnf
+│   │   ├── sql/
+│   ├── ...
+├── patient-service/
+│   ├── ...
+├── notification-service/
+│   ├── ...
+├── .env
+├── docker-compose.yml
+├── Dockerfile
+├── ...
+
+```
 
 
 ## Environment Variables
