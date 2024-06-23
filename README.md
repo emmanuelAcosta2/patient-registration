@@ -1,5 +1,3 @@
-# patient-registration
-
 # Patient Registration Application
 
 This application is a patient registration system composed of multiple microservices including a frontend built with React and Vite, and a backend built with NestJS. The system also uses MySQL as the database and Redis for BullQueue. All the services are containerized using Docker and managed through Docker Compose.
